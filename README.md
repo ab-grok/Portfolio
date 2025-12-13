@@ -1,3 +1,1 @@
-This project was inspired by the millions of online portfolio websites freely available for AI Inference.
-
-###### Designed by [ab.grok](https://instagram.com/ab.grok)
+###### This project showcases my previous works. It gives potential clients an idea of my skillset and serves as a calling card. AI was used in its creation.
