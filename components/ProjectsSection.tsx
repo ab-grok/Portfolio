@@ -1,12 +1,14 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
-import ProjectCard from './ProjectCard';
-import { projects } from '../data/projects';
+"use client";
+
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+import ProjectCard from "./ProjectCard";
+import { projects } from "../data/projects";
 
 export default function ProjectsSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
     <section id="projects" ref={ref} className="py-32 px-8 bg-neutral">
@@ -25,7 +27,9 @@ export default function ProjectsSection() {
               <motion.div
                 key={project.id}
                 initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                animate={
+                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+                }
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
                 <ProjectCard project={project} />

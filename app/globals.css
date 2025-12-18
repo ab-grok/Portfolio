@@ -1,50 +1,113 @@
+/* Test @animations for classes -- pot false */
+
 @import "tailwindcss";
+@custom-variant dark (&:is(.dark *));
+
+/* Imports inject a @fontface definition in the script -- it can be referenced for runtime consumption  */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 @import url("https://api.fontshare.com/v2/css?f[]=geist@400,500,600,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap");
 
-/* change :root to useTheme presets light/dark */
-:root {
-  --color-border: rgba(51, 51, 51, 1);
-  --color-input: rgba(51, 51, 51, 1);
-  --color-ring: rgba(29, 98, 237, 1);
-  --color-background: rgba(20, 20, 20, 1);
-  --color-foreground: rgba(240, 240, 240, 1);
-  --color-primary: rgba(29, 98, 237, 1);
-  --color-primary-foreground: rgba(250, 250, 250, 1);
-  --color-secondary: rgba(76, 131, 240, 1);
-  --color-secondary-foreground: rgba(255, 255, 255, 1);
-  --color-tertiary: rgba(182, 66, 240, 1);
-  --color-tertiary-foreground: rgba(252, 252, 252, 1);
-  --color-neutral: rgba(20, 20, 20, 1);
-  --color-neutral-foreground: rgba(240, 240, 240, 1);
-  --color-success: rgba(115, 115, 115, 1);
-  --color-warning: rgba(255, 198, 26, 1);
-  --color-destructive: rgba(239, 67, 67, 1);
-  --color-destructive-foreground: rgba(250, 250, 250, 1);
-  --color-muted: rgba(51, 51, 51, 1);
-  --color-muted-foreground: rgba(178, 178, 178, 1);
-  --color-accent: rgba(51, 51, 51, 1);
-  --color-accent-foreground: rgba(250, 250, 250, 1);
-  --color-popover: rgba(31, 31, 31, 1);
-  --color-popover-foreground: rgba(240, 240, 240, 1);
-  --color-card: rgba(31, 31, 31, 1);
-  --color-card-foreground: rgba(240, 240, 240, 1);
+/* useTheme will need a default of light/dark */
+
+.light {
+  --border: rgba(51, 51, 51, 1);
+  --input: rgba(51, 51, 51, 1);
+  --ring: rgba(29, 98, 237, 1);
+  --background: rgba(20, 20, 20, 1);
+  --foreground: rgba(240, 240, 240, 1);
+  --primary: rgba(29, 98, 237, 1);
+  --primary-foreground: rgba(250, 250, 250, 1);
+  --secondary: rgba(76, 131, 240, 1);
+  --secondary-foreground: rgba(255, 255, 255, 1);
+  --tertiary: rgba(182, 66, 240, 1);
+  --tertiary-foreground: rgba(252, 252, 252, 1);
+  --neutral: rgba(20, 20, 20, 1);
+  --neutral-foreground: rgba(240, 240, 240, 1);
+  --success: rgba(115, 115, 115, 1);
+  --warning: rgba(255, 198, 26, 1);
+  --destructive: rgba(239, 67, 67, 1);
+  --destructive-foreground: rgba(250, 250, 250, 1);
+  --muted: rgba(51, 51, 51, 1);
+  --muted-foreground: rgba(178, 178, 178, 1);
+  --accent: rgba(51, 51, 51, 1);
+  --accent-foreground: rgba(250, 250, 250, 1);
+  --popover: rgba(31, 31, 31, 1);
+  --popover-foreground: rgba(240, 240, 240, 1);
+  --card: rgba(31, 31, 31, 1);
+  --card-foreground: rgba(240, 240, 240, 1);
+}
+
+.dark {
+  --border: rgba(51, 51, 51, 1);
+  --input: rgba(51, 51, 51, 1);
+  --ring: rgba(29, 98, 237, 1);
+  --background: rgba(20, 20, 20, 1);
+  --foreground: rgba(240, 240, 240, 1);
+  --primary: rgba(29, 98, 237, 1);
+  --primary-foreground: rgba(250, 250, 250, 1);
+  --secondary: rgba(76, 131, 240, 1);
+  --secondary-foreground: rgba(255, 255, 255, 1);
+  --tertiary: rgba(182, 66, 240, 1);
+  --tertiary-foreground: rgba(252, 252, 252, 1);
+  --neutral: rgba(20, 20, 20, 1);
+  --neutral-foreground: rgba(240, 240, 240, 1);
+  --success: rgba(115, 115, 115, 1);
+  --warning: rgba(255, 198, 26, 1);
+  --destructive: rgba(239, 67, 67, 1);
+  --destructive-foreground: rgba(250, 250, 250, 1);
+  --muted: rgba(51, 51, 51, 1);
+  --muted-foreground: rgba(178, 178, 178, 1);
+  --accent: rgba(51, 51, 51, 1);
+  --accent-foreground: rgba(250, 250, 250, 1);
+  --popover: rgba(31, 31, 31, 1);
+  --popover-foreground: rgba(240, 240, 240, 1);
+  --card: rgba(31, 31, 31, 1);
+  --card-foreground: rgba(240, 240, 240, 1);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* fonts */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* colors */
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-tertiary: var(--tertiary);
+  --color-tertiary-foreground: var(--tertiary-foreground);
+  --color-neutral: var(--neutral);
+  --color-neutral-foreground: var(--neutral-foreground);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  /* sizes */
+  --rounded-sm: 4px;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
   background: var(--background);
@@ -52,7 +115,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/*  part from react app  */
 @layer base {
   * {
     @apply border-border;
@@ -70,6 +132,66 @@ body {
 }
 
 @layer utilities {
+  @keyframes accordion-down {
+    from {
+      height: "0";
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+
+  @keyframes neon-pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0, 7;
+    }
+  }
+
+  .animate-accordion-down {
+    animation: neon-pulse 0.2s ease-out;
+  }
+  .animate-accordion-up {
+    animation: neon-pulse 0.2s ease-out;
+  }
+  .animate-neon-pulse {
+    animation: neon-pulse 2s ease-in-out infinite;
+  }
+
+  .bg-gradient-1 {
+    background-image: linear-gradient(
+      135deg,
+      hsl(200, 90%, 55%),
+      hsl(280, 85%, 65%)
+    );
+  }
+  .bg-gradient-2 {
+    background-image: linear-gradient(
+      135deg,
+      hsl(170, 95%, 55%),
+      hsl(220, 85%, 60%)
+    );
+  }
+  .bg-button-border-gradient {
+    background-image: linear-gradient(
+      90deg,
+      hsl(200, 90%, 55%),
+      hsl(280, 85%, 65%)
+    );
+  }
+
   .text-gradient-1 {
     background: linear-gradient(135deg, hsl(200, 90%, 55%), hsl(280, 85%, 65%));
     -webkit-background-clip: text;

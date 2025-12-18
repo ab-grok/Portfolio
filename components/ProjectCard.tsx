@@ -1,9 +1,11 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
-import { Card, CardContent } from '@/components/ui/card';
-import { ExternalLink } from 'lucide-react';
-import type { Project } from '../data/projects';
+"use client";
+
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import { Card, CardContent } from "@/components/ui/card";
+import { ExternalLink } from "lucide-react";
+import type { Project } from "../data/projects";
 
 interface ProjectCardProps {
   project: Project;
@@ -43,7 +45,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{
-        perspective: '1000px',
+        perspective: "1000px",
       }}
       whileHover={{ scale: 1.02 }}
       transition={{ duration: 0.2 }}
@@ -53,7 +55,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         className="h-full bg-card text-card-foreground border-2 border-gray-700 hover:border-primary transition-all duration-300 neon-glow-hover overflow-hidden"
         style={{
           transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
-          transition: 'transform 0.1s ease-out',
+          transition: "transform 0.1s ease-out",
         }}
       >
         <CardContent className="p-0">
@@ -69,11 +71,18 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
           <div className="p-8">
             <div className="flex items-start justify-between mb-4">
-              <h3 className="text-2xl font-semibold text-foreground">{project.title}</h3>
-              <ExternalLink className="h-6 w-6 text-primary flex-shrink-0 ml-4" strokeWidth={1.5} />
+              <h3 className="text-2xl font-semibold text-foreground">
+                {project.title}
+              </h3>
+              <ExternalLink
+                className="h-6 w-6 text-primary flex-shrink-0 ml-4"
+                strokeWidth={1.5}
+              />
             </div>
 
-            <p className="text-base text-gray-300 mb-6 leading-relaxed">{project.description}</p>
+            <p className="text-base text-gray-300 mb-6 leading-relaxed">
+              {project.description}
+            </p>
 
             <div className="flex flex-wrap gap-2">
               {project.tags.map((tag) => (
