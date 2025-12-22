@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 import { Card, CardContent } from "@/components/ui/card";
 import { ExternalLink } from "lucide-react";
 import type { Project } from "../data/projects";
+import Image from "next/image";
 
 interface ProjectCardProps {
   project: Project;
@@ -14,7 +15,7 @@ interface ProjectCardProps {
 export default function ProjectCard({ project }: ProjectCardProps) {
   const [rotateX, setRotateX] = useState(0);
   const [rotateY, setRotateY] = useState(0);
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const card = e.currentTarget;
@@ -23,6 +24,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     const y = e.clientY - rect.top;
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
+    // Reverse motion direction
     const rotateXValue = ((y - centerY) / centerY) * -5;
     const rotateYValue = ((x - centerX) / centerX) * 5;
 
@@ -36,7 +38,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   };
 
   const handleClick = () => {
-    navigate(`/project/${project.id}`);
+    router.push(`/project/${project.id}`);
   };
 
   return (
@@ -52,7 +54,8 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       onClick={handleClick}
     >
       <Card
-        className="h-full bg-card text-card-foreground border-2 border-gray-700 hover:border-primary transition-all duration-300 neon-glow-hover overflow-hidden"
+        className="bg-card text-card-foreground hover:border-primary neon-glow-hover h-full overflow-hidden border-2 border-gray-700 transition-all duration-300"
+        // put clickable link here
         style={{
           transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
           transition: "transform 0.1s ease-out",
@@ -60,27 +63,29 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       >
         <CardContent className="p-0">
           <div className="relative overflow-hidden">
-            <img
+            {/* use demo vid instead */}
+            <Image
               src={project.image}
               alt={project.imageAlt}
-              className="w-full h-64 object-cover transition-transform duration-300 hover:scale-110"
+              className="h-64 w-full object-cover transition-transform duration-300 hover:scale-110"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent opacity-60" />
+            <div className="from-card absolute inset-0 bg-linear-to-t to-transparent opacity-60" />
           </div>
 
           <div className="p-8">
-            <div className="flex items-start justify-between mb-4">
-              <h3 className="text-2xl font-semibold text-foreground">
+            <div className="mb-4 flex items-start justify-between">
+              {/* add clickable link here */}
+              <h3 className="text-foreground text-2xl font-semibold">
                 {project.title}
               </h3>
               <ExternalLink
-                className="h-6 w-6 text-primary flex-shrink-0 ml-4"
+                className="text-primary ml-4 h-6 w-6 shrink-0"
                 strokeWidth={1.5}
               />
             </div>
 
-            <p className="text-base text-gray-300 mb-6 leading-relaxed">
+            <p className="mb-6 text-base leading-relaxed text-gray-300">
               {project.description}
             </p>
 
@@ -88,7 +93,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               {project.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-4 py-2 bg-accent text-accent-foreground rounded text-sm"
+                  className="bg-accent text-accent-foreground rounded px-4 py-2 text-sm"
                 >
                   {tag}
                 </span>

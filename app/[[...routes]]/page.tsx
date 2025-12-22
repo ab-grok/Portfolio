@@ -8,9 +8,11 @@ import ProjectsSection from "@/components/ProjectsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
+import { useRouter } from "next/navigation";
 
 export default function HomePage() {
   const [activeSection, setActiveSection] = useState("hero");
+  const {} = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,7 +39,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="bg-background text-foreground min-h-screen">
       <ScrollProgress />
       <Navbar activeSection={activeSection} />
       <main>

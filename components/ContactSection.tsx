@@ -6,7 +6,7 @@ import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Github, Linkedin, Twitter } from "lucide-react";
+import { FaTwitter, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa6";
 
 export default function ContactSection() {
   const ref = useRef(null);
@@ -24,7 +24,7 @@ export default function ContactSection() {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setFormData({
       ...formData,
@@ -33,29 +33,40 @@ export default function ContactSection() {
   };
 
   const socialLinks = [
-    { icon: Github, href: "https://github.com", label: "GitHub" },
-    { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-    { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
+    {
+      icon: FaLinkedin,
+      href: process.env.NEXT_PUBLIC_LINKEDIN,
+      label: "LinkedIn",
+    },
+    {
+      icon: FaTwitter,
+      href: process.env.NEXT_PUBLIC_X,
+      label: "X",
+    },
+    {
+      icon: FaInstagram,
+      href: process.env.NEXT_PUBLIC_IG,
+      label: "Instagram",
+    },
   ];
 
   return (
-    <section id="contact" ref={ref} className="py-32 px-8 bg-background">
+    <section id="contact" ref={ref} className="bg-background px-8 py-32">
       <div className="container mx-auto max-w-3xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center text-foreground">
+          <h2 className="text-foreground mb-8 text-center text-4xl font-bold md:text-5xl">
             Let's <span className="text-gradient-1">Connect</span>
           </h2>
 
-          <p className="text-lg text-gray-200 mb-16 text-center">
-            Have a project in mind or want to collaborate? I'd love to hear from
-            you.
+          <p className="mb-16 text-center text-lg text-gray-200">
+            Have a project in mind or want to collaborate? You can contact me!
           </p>
 
-          <form onSubmit={handleSubmit} className="space-y-8 mb-16">
+          <form onSubmit={handleSubmit} className="mb-16 space-y-8">
             <div>
               <Input
                 type="text"
@@ -64,7 +75,7 @@ export default function ContactSection() {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="bg-card text-card-foreground border-gray-700 focus:border-primary h-14 text-base"
+                className="bg-card text-card-foreground focus:border-primary h-14 border-gray-700 text-base"
               />
             </div>
 
@@ -76,7 +87,7 @@ export default function ContactSection() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="bg-card text-card-foreground border-gray-700 focus:border-primary h-14 text-base"
+                className="bg-card text-card-foreground focus:border-primary h-14 border-gray-700 text-base"
               />
             </div>
 
@@ -88,14 +99,15 @@ export default function ContactSection() {
                 onChange={handleChange}
                 required
                 rows={6}
-                className="bg-card text-card-foreground border-gray-700 focus:border-primary text-base resize-none"
+                className="bg-card text-card-foreground focus:border-primary resize-none border-gray-700 text-base"
               />
             </div>
 
             <Button
               type="submit"
               size="lg"
-              className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-normal text-base h-14"
+              // pulse animation on in view and after a certain period
+              className="bg-primary text-primary-foreground hover:bg-primary/90 h-14 w-full text-base font-normal"
             >
               Send Message
             </Button>
@@ -103,7 +115,7 @@ export default function ContactSection() {
 
           {/* Social Links */}
           <div className="text-center">
-            <p className="text-lg text-gray-200 mb-8">
+            <p className="mb-8 text-lg text-gray-200">
               Or connect with me on social media
             </p>
             <div className="flex justify-center gap-8">
@@ -113,9 +125,10 @@ export default function ContactSection() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-primary transition-colors"
+                  className="hover:text-primary text-gray-300 transition-colors"
                   aria-label={social.label}
                 >
+                  {/* scale with hover */}
                   <social.icon className="h-8 w-8" strokeWidth={1.5} />
                 </a>
               ))}

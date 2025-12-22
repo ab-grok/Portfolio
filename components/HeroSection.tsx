@@ -20,7 +20,7 @@ export default function HeroSection() {
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         <motion.video
-          alt="cyber city background"
+          about="Hero section"
           src="https://c.animaapp.com/mj2xtqbgWtXM5V/img/ai_1.mp4"
           poster="https://c.animaapp.com/mj2xtqbgWtXM5V/img/ai_1-poster.png"
           className="w-full h-full object-cover"
@@ -33,7 +33,7 @@ export default function HeroSection() {
           transition={{ duration: 1.5, ease: "easeOut" }}
         />
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background" />
+        <div className="absolute inset-0 bg-linear-to-b from-transparent via-background/50 to-background" />
       </div>
 
       {/* Content */}
@@ -53,7 +53,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          Crafting digital experiences with precision and innovation
+          Crafting digital experiences with AI assistance
         </motion.p>
 
         <motion.div
