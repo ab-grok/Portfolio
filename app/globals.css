@@ -1,12 +1,12 @@
-/* Test @animations for classes -- pot false */
-
-@import "tailwindcss";
-@custom-variant dark (&:is(.dark *));
-
 /* Imports inject a @fontface definition in the script -- it can be referenced for runtime consumption  */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 @import url("https://api.fontshare.com/v2/css?f[]=geist@400,500,600,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap");
+
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+@custom-variant dark (&: is(.dark *));
+/* Test @animations for classes -- pot false */
 
 /* useTheme will need a default of light/dark */
 
@@ -15,6 +15,7 @@
   --input: rgba(51, 51, 51, 1);
   --ring: rgba(29, 98, 237, 1);
   --background: rgba(20, 20, 20, 1);
+
   --foreground: rgba(240, 240, 240, 1);
   --primary: rgba(29, 98, 237, 1);
   --primary-foreground: rgba(250, 250, 250, 1);
@@ -43,6 +44,7 @@
   --input: rgba(51, 51, 51, 1);
   --ring: rgba(29, 98, 237, 1);
   --background: rgba(20, 20, 20, 1);
+  --background-2: rgb(9, 0, 10);
   --foreground: rgba(240, 240, 240, 1);
   --primary: rgba(29, 98, 237, 1);
   --primary-foreground: rgba(250, 250, 250, 1);
@@ -76,6 +78,7 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-background: var(--background);
+  --color-background-2: var(--background-2);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);

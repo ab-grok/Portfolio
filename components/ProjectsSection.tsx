@@ -11,18 +11,18 @@ export default function ProjectsSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="projects" ref={ref} className="py-32 px-8 bg-neutral">
+    <section id="projects" ref={ref} className="bg-background-2 px-8 py-32">
       <div className="container mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center text-foreground">
-            Selected <span className="text-gradient-1">Projects</span>
+          <h2 className="text-foreground mb-16 text-center text-4xl font-bold md:text-5xl">
+            Developed <span className="text-gradient-1">Projects</span>
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project, index) => (
               <motion.div
                 key={project.id}

@@ -40,8 +40,8 @@ export default function HomePage() {
 
   return (
     <div className="bg-background text-foreground min-h-screen">
-      <ScrollProgress />
       <Navbar activeSection={activeSection} />
+      <ScrollProgress />
       <main>
         <HeroSection />
         <AboutSection />
