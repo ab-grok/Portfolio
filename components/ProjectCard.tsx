@@ -18,11 +18,18 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   const [cardClicked, setCardClicked] = useState(false);
   const router = useRouter();
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseMove = (
+    e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>,
+  ) => {
+    //account for mobile. e3 represents e.touches from Touchevent or e from mouseEvent
+    const e1 = e as React.TouchEvent<HTMLDivElement>;
+    const e2 = e as React.MouseEvent<HTMLDivElement>;
+    const e3 = e1.touches ? e1.touches[0] : e2;
     const card = e.currentTarget;
     const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+
+    const x = e3.clientX - rect.left;
+    const y = e3.clientY - rect.top;
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
     // Reverse motion direction
@@ -46,9 +53,10 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     <motion.div
       className="h-full cursor-pointer"
       onMouseMove={handleMouseMove}
+      onTouchMove={handleMouseMove}
       onMouseLeave={(e) => {
         setCardClicked(false);
-        handleMouseLeave;
+        // handleMouseLeave(); //keep cards in same pos after mouse/touch moves
       }}
       style={{
         perspective: "1000px",
