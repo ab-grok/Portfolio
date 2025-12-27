@@ -8,7 +8,7 @@ import { projects } from "../data/projects";
 
 export default function ProjectsSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-300px" });
 
   return (
     <section id="projects" ref={ref} className="bg-background-2 px-8 py-32">
@@ -19,7 +19,7 @@ export default function ProjectsSection() {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-foreground mb-16 text-center text-4xl font-bold md:text-5xl">
-            Developed <span className="text-gradient-1">Projects</span>
+            Dev <span className="text-gradient-1">Projects</span>
           </h2>
 
           <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">

@@ -15,6 +15,7 @@ interface ProjectCardProps {
 export default function ProjectCard({ project }: ProjectCardProps) {
   const [rotateX, setRotateX] = useState(0);
   const [rotateY, setRotateY] = useState(0);
+  const [cardClicked, setCardClicked] = useState(false);
   const router = useRouter();
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -45,35 +46,47 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     <motion.div
       className="h-full cursor-pointer"
       onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+      onMouseLeave={(e) => {
+        setCardClicked(false);
+        handleMouseLeave;
+      }}
       style={{
         perspective: "1000px",
       }}
       whileHover={{ scale: 1.02 }}
       transition={{ duration: 0.2 }}
       onClick={handleClick}
+      onMouseDown={() => setCardClicked(true)}
+      onMouseUp={() => setCardClicked(false)}
     >
       <Card
-        className="bg-card text-card-foreground hover:border-primary neon-glow-hover h-full overflow-hidden border-2 border-gray-700 transition-all duration-300"
+        className={`${cardClicked ? "scale-95" : "scale-100"} bg-card text-card-foreground hover:border-primary neon-glow-hover h-full max-h-150 border-2 border-gray-700 py-8 transition-all duration-300`}
         // put clickable link here
         style={{
           transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
           transition: "transform 0.1s ease-out",
+          transformStyle: "preserve-3d",
         }}
       >
-        <CardContent className="p-0">
+        <CardContent
+          style={{
+            transform: "translateZ(100px)",
+          }}
+          className="relative top-0 max-h-full w-auto overflow-hidden"
+        >
           <div className="relative overflow-hidden">
             {/* use demo vid instead */}
             <Image
               src={project.image}
               alt={project.imageAlt}
-              className="h-64 w-full object-cover transition-transform duration-300 hover:scale-110"
+              placeholder="blur"
+              className="h-64 w-full object-cover backdrop-blur-md transition-transform duration-300 hover:scale-110"
               loading="lazy"
             />
             <div className="from-card absolute inset-0 bg-linear-to-t to-transparent opacity-60" />
           </div>
 
-          <div className="p-8">
+          <div className="p-4 sm:p-8">
             <div className="mb-4 flex items-start justify-between">
               {/* add clickable link here */}
               <h3 className="text-foreground text-2xl font-semibold">
@@ -85,7 +98,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               />
             </div>
 
-            <p className="mb-6 text-base leading-relaxed text-gray-300">
+            <p className="mb-6 h-15 overflow-y-scroll text-base leading-relaxed text-gray-300">
               {project.description}
             </p>
 

@@ -33,10 +33,10 @@ export default function Navbar({ activeSection }: NavbarProps) {
   };
 
   return (
-    <header className="bg-background/50 border-border fixed top-0 right-0 left-0 z-50 border-b backdrop-blur-md">
+    <header className="bg-background/50 border-border fixed top-0 right-0 left-0 z-50 border-b shadow-md shadow-black backdrop-blur-md">
       <nav className="container mx-auto px-8 py-6">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-10">
+          <div className="flex items-center space-x-6 sm:space-x-10">
             <Image
               src={logoLetters}
               alt="Logo Letters"
@@ -46,7 +46,7 @@ export default function Navbar({ activeSection }: NavbarProps) {
 
             <button
               onClick={() => scrollToSection("hero")}
-              className="text-foreground hover:text-primary hidden cursor-pointer items-center text-2xl font-bold transition-colors md:flex"
+              className="text-foreground hover:text-primary flex cursor-pointer items-center text-2xl font-bold transition-colors"
             >
               Sule Abraham
             </button>

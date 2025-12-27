@@ -11,9 +11,9 @@ export default function Footer() {
   return (
     <footer className="bg-neutral border-border border-t px-8 py-12">
       <div className="container mx-auto max-w-7xl">
-        <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
+        <div className="flex flex-col items-center justify-between gap-x-[40%] md:flex-row md:justify-center">
           <p className="text-base text-gray-400">
-            © {new Date().getFullYear()} AB.grok Portfolio. All rights reserved.
+            © {new Date().getFullYear()} Ab.Grok. All rights reserved.
           </p>
 
           <Button

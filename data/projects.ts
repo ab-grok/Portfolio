@@ -1,4 +1,5 @@
 import biuDms from "@/public/biu-dms.png";
+import portfolio from "@/public/portfolio.png";
 import underConstruction from "@/public/website_construction_2.png";
 import { StaticImageData } from "next/image";
 
@@ -20,13 +21,13 @@ export const projects: Project[] = [
     id: "project-1",
     title: "Records Management System",
     description:
-      "A records management system that incorporates an access-level based control mechanism in a multi-user platform where users (primarily academic staff) share and store, manage, and retrieve text, files, and other kinds of data",
+      "A records management system that enables data exchange in a multi user platform",
     fullDescription:
-      "A comprehensive next.js application designed to streamline the interaction in a coworker or interdependent personnel framework. It integrated then top-tier mechanisms for security (like data encryption), access (in assigned user roles), UI/UX (in minimalistic fluidity). This platform enables the secure sharing and storage of confidential data with selected enterprise members.",
+      "A comprehensive next.js application designed to streamline multi personnel interaction. It integrated then top-tier mechanisms for security (like data encryption), access control (in user roles), UI/UX (in minimalistic fluidity). This platform enables the secure sharing and storage of confidential data with selected enterprise members.",
     image: biuDms,
     imageAlt: "project interface grid",
-    tags: ["NextJS", "TypeScript", "PostgreSQL"],
-    technologies: ["React", "TypeScript", "NextJS", "PostgreSQL"],
+    tags: ["Next.js", "TypeScript", "PostgreSQL"],
+    technologies: ["React", "TypeScript", "Next.js", "PostgreSQL"],
     features: [
       "Data Management",
       "Interactive layered access architecture",
@@ -37,11 +38,12 @@ export const projects: Project[] = [
   },
   {
     id: "project-2",
-    title: "portfolio",
-    description: "Portfolio website featuring previously undergone projects",
+    title: "Portfolio Website",
+    description:
+      "A Personal website mainly for showcasing projects and serving as an online calling card",
     fullDescription:
       "A next-generation futuristic portfolio web application that showcases my dev works and ideas, provides a bio and serves as a calling card for potential clients or collaborators.",
-    image: underConstruction,
+    image: portfolio,
     imageAlt: "AB's Portfolio",
     tags: ["Next.js", "Tailwind", "framer-motion", "card tilt effect"],
     technologies: [
@@ -59,20 +61,21 @@ export const projects: Project[] = [
       "Mobile first layout",
       "Futuristic tones",
     ],
-    challenges: "",
+    challenges: "None yet",
   },
   {
     id: "project-3",
     title: "ScreenShooter",
     description:
-      "A web crawler that fetches html and screenshot data recurrently.",
+      "A web crawler that fetches html and screenshot data on preset basis.",
     fullDescription:
-      "A web crawler that fetches html and screenshot data recurrently.",
+      "A web crawler that fetches html and screenshot data on preset basis.",
     image: underConstruction,
     imageAlt: "Website under construction",
     tags: ["Node.js", "Next.js", "PostgreSQL"],
     technologies: ["Node.js", "TypeScript", "Redis", "PostgreSQL"],
     features: ["Real-time collaboration features for code review teams"],
-    challenges: "",
+    challenges:
+      "Sorting database interaction -- reiteratively querying dynamically created tables and the following cleanup process.",
   },
 ];
