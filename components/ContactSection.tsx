@@ -18,9 +18,17 @@ export default function ContactSection() {
   const iconsInView = useInView(iconRef, { once: true, margin: "-300px" });
   const [mouseStale, setMouseStale] = useState(false);
   const [formSubmitting, setFormSubmitting] = useState(false);
-  const [sendMessageAlt, setSendMsgAlt] = useState(false);
+  const [formSubittedWait, setFormSubmittedWait] = useState<string[]>([]);
   const mouseMoveTimer = useRef<NodeJS.Timeout>(null);
   const { fpID } = useFpContext();
+
+  const waitMsgs = [
+    "Already got your message",
+    "Be patient!",
+    "One message sent, still need another?",
+    "I'll get back to you!",
+    "Too many messages",
+  ];
 
   const [formData, setFormData] = useState({
     name: "",

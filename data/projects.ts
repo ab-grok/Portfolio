@@ -14,12 +14,14 @@ export interface Project {
   technologies: string[];
   features: string[];
   challenges: string;
+  link?: string;
 }
 
 export const projects: Project[] = [
   {
     id: "project-1",
     title: "Records Management System",
+    link: "http://biu-dms.vercel.app",
     description:
       "A records management system that enables data exchange in a multi user platform",
     fullDescription:
@@ -39,6 +41,7 @@ export const projects: Project[] = [
   {
     id: "project-2",
     title: "Portfolio Website",
+    link: "http://ab-grok.uk",
     description:
       "A Personal website mainly for showcasing projects and serving as an online calling card",
     fullDescription:

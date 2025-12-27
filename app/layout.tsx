@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     "ab.grok",
     "sule abraham",
   ],
-  icons: { icon: "/logo_heart.png" },
+  icons: { icon: "/logo_heart_dark.png" },
   robots: { index: true, follow: true },
   twitter: {
     card: "summary_large_image",
