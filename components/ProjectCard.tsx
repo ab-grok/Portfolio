@@ -39,7 +39,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   };
 
   const handleClick = () => {
-    router.push(`/project/${project.id}`);
+    router.push(`/project/${project.title.replaceAll(" ", "")}`);
   };
 
   return (

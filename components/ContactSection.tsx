@@ -172,7 +172,7 @@ export default function ContactSection() {
               className={cn(
                 `text-primary-foreground relative h-14 w-full cursor-pointer from-blue-600 to-pink-500 text-base font-normal transition-all duration-200 ease-out`,
                 formSubmitting
-                  ? "bg-pink-500"
+                  ? "bg-pink-400"
                   : "bg-primary hover:bg-linear-to-l active:translate-y-0.5 active:active:scale-98",
                 cardInView &&
                   mouseStale &&

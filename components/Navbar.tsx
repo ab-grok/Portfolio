@@ -97,7 +97,7 @@ export default function Navbar({ activeSection }: NavbarProps) {
                   <NavigationMenuLink asChild>
                     <button
                       onClick={() => scrollToSection(item.id)}
-                      className={`w-full cursor-pointer rounded-md px-6 py-4 text-left text-base font-normal transition-all ${
+                      className={`w-full cursor-pointer ${activeSection != item.id && "active:translate-y-2 active:scale-80"} rounded-md px-6 py-4 text-left text-base font-normal transition-all ${
                         activeSection === item.id
                           ? "text-primary bg-accent"
                           : "hover:text-primary hover:bg-accent/50 text-gray-200"

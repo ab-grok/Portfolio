@@ -8,10 +8,9 @@ import { projects } from "@/data/projects";
 import Image from "next/image";
 
 export default function ProjectDetailPage() {
-  const [visitSite, setVisitSite] = useState(false);
   const { id } = useParams();
   const router = useRouter();
-  const project = projects.find((p) => p.id === id);
+  const project = projects.find((p) => p.title.replaceAll(" ", "") === id);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -26,7 +25,7 @@ export default function ProjectDetailPage() {
           </h1>
           <Button
             onClick={() => router.push("/")}
-            className="hover:bg-primary text-primary-foreground h-12 font-normal transition-all duration-200 active:scale-98"
+            className="hover:bg-primary text-primary-foreground h-12 translate-y-2 scale-98 font-normal transition-all duration-200"
             variant="link"
           >
             <ArrowLeft className="mr-2 h-5 w-5" strokeWidth={1.5} />
@@ -44,16 +43,14 @@ export default function ProjectDetailPage() {
           <Button
             onClick={() => router.push("/")}
             variant="ghost"
-            className="text-foreground text-md hover:bg-accent hover:text-accent-foreground bg-transparent font-normal"
+            className="text-foreground text-md hover:bg-accent hover:text-accent-foreground bg-transparent font-normal shadow-2xs transition-all duration-300 active:scale-x-90"
           >
             <ArrowLeft className="mr-2 h-5 w-5" strokeWidth={1.5} />
             Back to Portfolio
           </Button>
           <a href={project.link} target="_blank" rel="noopener noreferrer">
             <Button
-              className="transition-colors duration-500 hover:bg-pink-500 hover:text-white"
-              onMouseDown={() => setVisitSite(true)}
-              onMouseUp={() => setVisitSite(false)}
+              className={`active:translate-y-0.4 transition-all hover:bg-pink-400 hover:text-white active:scale-90 active:shadow-2xs`}
               variant="link"
             >
               Visit Site

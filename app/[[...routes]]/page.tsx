@@ -8,11 +8,9 @@ import ProjectsSection from "@/components/ProjectsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
-import { useRouter } from "next/navigation";
 
 export default function HomePage() {
   const [activeSection, setActiveSection] = useState("hero");
-  const {} = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
