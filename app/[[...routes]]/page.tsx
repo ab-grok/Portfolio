@@ -37,7 +37,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="bg-background text-foreground min-h-screen">
+    <div className="bg-background text-foreground min-h-screen overflow-hidden">
       <Navbar activeSection={activeSection} />
       <ScrollProgress />
       <main>
