@@ -60,6 +60,8 @@ export default function ContactSection() {
     try {
       e.preventDefault();
       setFormSubmitting(true);
+      if (formCooling) throw { message: "Too many message attempts" };
+
       handleWaitMsgs();
 
       const { error } = await handleMessageSubmitted({ ...formData, fpID });
@@ -73,8 +75,9 @@ export default function ContactSection() {
 
       const fd = formData;
       setFormData({ ...fd, message: error ? fd.message : "" });
+    } catch (e: any) {
+      setFormSubmitting(false);
     } finally {
-      setInterval(() => {}, 1000);
       setFormSubmitting(false);
     }
   };
