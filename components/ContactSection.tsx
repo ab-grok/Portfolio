@@ -18,7 +18,7 @@ export default function ContactSection() {
   const iconsInView = useInView(iconRef, { once: true, margin: "-300px" });
   const [mouseStale, setMouseStale] = useState(false);
   const [formSubmitting, setFormSubmitting] = useState(false);
-  const [formCoolDown, setFormCoolDown] = useState(false);
+  const [formCooling, setFormCooling] = useState(false);
   const coolDownRef = useRef(20);
   const mouseMoveTimer = useRef<NodeJS.Timeout>(null);
   const { fpID } = useFpContext();
@@ -35,15 +35,16 @@ export default function ContactSection() {
     return waitMsgs[Math.floor(Math.random() * waitMsgs.length)];
   };
 
+  //handling implme confusion: 1 -- need formcooldown active for 20s after sending message. 2 -- but wait msg only disp when user clicks (formSubmitting)
   const handleWaitMsgs = () => {
-    setFormCoolDown(true);
+    setFormCooling(true);
 
     const countDownInt = setInterval(() => {
       coolDownRef.current += -1;
     }, 1000);
 
     setTimeout(() => {
-      setFormCoolDown(false);
+      setFormCooling(false);
       clearInterval(countDownInt); // does this effectively clear countDownInt's setInterval?
     }, 20000);
   };
@@ -187,7 +188,7 @@ export default function ContactSection() {
               type="submit"
               size="lg"
               id="sendMessage"
-              disabled={formCoolDown}
+              disabled={formCooling}
               // pulse animation on in view and after a certain period
               className={cn(
                 `text-primary-foreground relative h-14 w-full cursor-pointer from-blue-600 to-pink-500 text-base font-normal transition-all duration-200 ease-out`,
@@ -196,14 +197,14 @@ export default function ContactSection() {
                   : "bg-primary hover:bg-linear-to-l active:translate-y-0.5 active:active:scale-98",
                 cardInView &&
                   mouseStale &&
-                  !formCoolDown &&
+                  !formCooling &&
                   "animate-neon-pulse-colors",
               )}
             >
-              {formSubmitting ? (
-                <FaSpinner className="absolute scale-200 animate-spin fill-white" />
-              ) : formCoolDown ? (
+              {formSubmitting && formCooling ? (
                 <span>{waitMsg()}</span>
+              ) : formSubmitting ? (
+                <FaSpinner className="absolute scale-200 animate-spin fill-white" />
               ) : (
                 <span>Send Message</span>
               )}
