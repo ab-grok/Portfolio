@@ -18,17 +18,35 @@ export default function ContactSection() {
   const iconsInView = useInView(iconRef, { once: true, margin: "-300px" });
   const [mouseStale, setMouseStale] = useState(false);
   const [formSubmitting, setFormSubmitting] = useState(false);
-  const [formSubittedWait, setFormSubmittedWait] = useState<string[]>([]);
+  const [formCoolDown, setFormCoolDown] = useState(false);
+  const coolDownRef = useRef(20);
   const mouseMoveTimer = useRef<NodeJS.Timeout>(null);
   const { fpID } = useFpContext();
 
-  const waitMsgs = [
-    "Already got your message",
-    "Be patient!",
-    "One message sent, still need another?",
-    "I'll get back to you!",
-    "Too many messages",
-  ];
+  const waitMsg = () => {
+    const waitMsgs = [
+      "Already got your message.",
+      "No rush please!",
+      "One message sent, need two?",
+      "I'll get back to you!",
+      "Too many messages",
+    ];
+
+    return waitMsgs[Math.floor(Math.random() * waitMsgs.length)];
+  };
+
+  const handleWaitMsgs = () => {
+    setFormCoolDown(true);
+
+    const countDownInt = setInterval(() => {
+      coolDownRef.current += -1;
+    }, 1000);
+
+    setTimeout(() => {
+      setFormCoolDown(false);
+      clearInterval(countDownInt); // does this effectively clear countDownInt's setInterval?
+    }, 20000);
+  };
 
   const [formData, setFormData] = useState({
     name: "",
@@ -41,6 +59,8 @@ export default function ContactSection() {
     try {
       e.preventDefault();
       setFormSubmitting(true);
+      handleWaitMsgs();
+
       const { error } = await handleMessageSubmitted({ ...formData, fpID });
 
       const title = error ? "That's not right!" : "Got your message!";
@@ -167,7 +187,7 @@ export default function ContactSection() {
               type="submit"
               size="lg"
               id="sendMessage"
-              disabled={formSubmitting}
+              disabled={formCoolDown}
               // pulse animation on in view and after a certain period
               className={cn(
                 `text-primary-foreground relative h-14 w-full cursor-pointer from-blue-600 to-pink-500 text-base font-normal transition-all duration-200 ease-out`,
@@ -176,12 +196,14 @@ export default function ContactSection() {
                   : "bg-primary hover:bg-linear-to-l active:translate-y-0.5 active:active:scale-98",
                 cardInView &&
                   mouseStale &&
-                  !formSubmitting &&
+                  !formCoolDown &&
                   "animate-neon-pulse-colors",
               )}
             >
               {formSubmitting ? (
                 <FaSpinner className="absolute scale-200 animate-spin fill-white" />
+              ) : formCoolDown ? (
+                <span>{waitMsg()}</span>
               ) : (
                 <span>Send Message</span>
               )}
