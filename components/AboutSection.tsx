@@ -71,30 +71,68 @@ export default function AboutSection() {
             }
             animate={{ opacity: 1, x: 0, y: 0 }}
             transition={{ duration: 0.8 }}
+            className=""
           >
             <h2 className="text-foreground mb-8 text-4xl font-bold md:text-5xl">
               About <span className="text-gradient-1">Me</span>
             </h2>
 
+            <div className="flex h-8 w-full space-x-3">
+              <div
+                id="section-line"
+                className="bg-foreground/10 mt-4 flex h-0.5 w-4/7 sm:w-4/6 md:w-3/5"
+              />
+              <span className="font-figtree text-foreground/20 text-lg font-black xl:text-2xl">
+                {" "}
+                Client First
+              </span>
+            </div>
+
             <p className="mb-8 text-lg leading-relaxed text-gray-200">
-              I'm a client-first software engineer. My goal is digitally
-              depicting your mind's creation. I spend a decisive portion of my
-              development hours working on seamless integrations for required
-              components — prioritizing the product's ease of use .
+              I follow a shareholder‑first policy that guides every stage of my
+              project life-cycle. As a developer, my mission is to translate
+              your vision into a precise digital reality. Your specifications
+              are the roots of my creativity. I dedicate a significant portion
+              of my development time to ensuring seamless integration of layout
+              components, delivering solutions that are both functional and
+              refined
+              {/* —. */}
             </p>
 
+            <div className="relative mb-1 flex h-8 w-full justify-end space-x-3">
+              <span className="font-figtree text-foreground/20 text-lg font-black xl:text-2xl">
+                {" "}
+                Dev Hours
+              </span>
+              <div
+                id="section-line"
+                className="bg-foreground/10 relative mt-4 flex h-0.5 w-4/7 justify-end sm:w-4/6 md:w-3/5"
+              />
+            </div>
             <p className="mb-12 text-lg leading-relaxed text-gray-200">
-              Armed with 2+ years of deep programming concepts, a drive for
-              learning, and a style choice of contemporary art. My designs aim
-              to transform complex problems into minimalistic, responsive, and
-              scalable software solutions.
+              I'm a recent graduate armed with{" "}
+              <span className="text-gradient-5 rounded-3xl border-2 px-2">
+                2+ years of deep programming concepts
+              </span>
+              {", "}
+              <span className="text-gradient-3 rounded-3xl border-2 px-2">
+                a style choice of contemporary art
+              </span>
+              {", "}
+              and{" "}
+              <span className="text-gradient-4 rounded-3xl border-2 px-2">
+                a drive for learning
+              </span>
+              {". "}
+              My projects aim to transform complex problems into minimalistic,
+              responsive, and scalable software solutions.
             </p>
 
             {/* Skills */}
             <div>
               <h4
                 className={cn(
-                  "text-gradient-1 mb-6 text-3xl font-semibold transition-all delay-[3s] duration-1000",
+                  "text-gradient-1 mb-6 text-3xl font-semibold transition-all delay-[5s] duration-1000",
                   picHovered && "animate-bounce",
                 )}
               >

@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 @import url("https://api.fontshare.com/v2/css?f[]=geist@400,500,600,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Dancing+Script:wght@400..700&family=Pacifico&family=Saira:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
 
 @import "tailwindcss";
 @plugin "tailwindcss-animate";
@@ -50,7 +50,7 @@
   --input: rgba(51, 51, 51, 1);
   --ring: rgba(29, 98, 237, 1);
   --background: rgba(20, 20, 20, 1);
-  --background-2: rgb(25, 19, 24);
+  --background-2: rgb(20, 19, 25);
   --foreground: rgba(240, 240, 240, 1);
   --primary: rgba(29, 98, 237, 1);
   --primary-foreground: rgba(250, 250, 250, 1);
@@ -79,7 +79,7 @@
   --input: rgba(51, 51, 51, 1);
   --ring: rgba(29, 98, 237, 1);
   --background: rgba(20, 20, 20, 1);
-  --background-2: rgb(25, 19, 24);
+  --background-2: rgb(20, 19, 25);
   --foreground: rgba(240, 240, 240, 1);
   --primary: rgba(29, 98, 237, 1);
   --primary-foreground: rgba(250, 250, 250, 1);
@@ -108,6 +108,7 @@
   --font-sans: "Inter", sans-serif;
   --font-mono: "Fira Code", monospace;
   --font-noto-sans: "Noto Sans", sans-serif;
+  --font-pacifico: "Pacifico", "cursive";
 
   /* colors */
   --color-border: var(--border);
@@ -157,7 +158,8 @@
   body {
     @apply bg-background text-foreground;
     scroll-behavior: smooth;
-    font-family: var(--font-noto-sans);
+    font-family: "Ubuntu", sans-serif;
+    font-weight: normal;
   }
 }
 
@@ -284,6 +286,27 @@
     background-clip: text;
   }
 
+  .text-gradient-3 {
+    background: linear-gradient(135deg, hsl(24, 100%, 24%), hsl(338, 98%, 16%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-4 {
+    background: linear-gradient(135deg, hsl(24, 100%, 24%), hsl(130, 98%, 23%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-5 {
+    background: linear-gradient(135deg, hsl(24, 100%, 24%), hsl(259, 98%, 36%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
   .neon-glow {
     box-shadow: 0 0 20px hsla(220, 85%, 52%, 0.5);
   }
@@ -299,6 +322,9 @@
     box-shadow: 0 0 30px hsla(220, 85%, 52%, 0.7);
   }
 
+  .font-figtree {
+    font-family: "Comfortaa", sans-serif;
+  }
   /* .bg-gradient-3 {
     background-color: linear-gradient(
       to bottom,

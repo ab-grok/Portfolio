@@ -11,7 +11,11 @@ export default function ProjectsSection() {
   const isInView = useInView(ref, { once: true, margin: "-300px" });
 
   return (
-    <section id="projects" ref={ref} className="bg-background-2 px-8 py-32">
+    <section
+      id="projects"
+      ref={ref}
+      className="bg-background-2 rounded-t-[50px] px-8 py-32 md:rounded-t-[200px]"
+    >
       <div className="container mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
