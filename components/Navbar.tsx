@@ -36,7 +36,7 @@ export default function Navbar({ activeSection }: NavbarProps) {
     <header className="bg-background/50 border-border fixed top-0 right-0 left-0 z-50 border-b shadow-md shadow-black backdrop-blur-md">
       <nav className="container mx-auto px-8 py-6">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-6 sm:space-x-10">
+          <div className="flex items-center space-x-4 sm:space-x-10">
             <Image
               src={logoLetters}
               alt="Logo Letters"
