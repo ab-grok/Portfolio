@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 export default function AboutSection() {
   const ref = useRef(null);
   const skillsRef = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-300px" });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
   const skillsInView = useInView(skillsRef, { once: true, margin: "-100px" });
   const [picHovered, setPicHovered] = useState(false);
   const [mobileView, setMobileView] = useState(false);
