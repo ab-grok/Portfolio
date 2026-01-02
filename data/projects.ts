@@ -70,7 +70,7 @@ export const projects: Project[] = [
     id: "project-3",
     title: "ScreenShooter",
     description:
-      "A web crawler that fetches html and screenshot data on set time intervals.",
+      "A web crawler that fetches html and screenshot data on recurrent intervals.",
     fullDescription:
       "A web crawler that fetches html and screenshot data on set time intervals.",
     image: underConstruction,
