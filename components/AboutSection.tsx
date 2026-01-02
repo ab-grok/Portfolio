@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import pic from "../public/portrait.png";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
@@ -13,6 +13,16 @@ export default function AboutSection() {
   const isInView = useInView(ref, { once: true, margin: "-300px" });
   const skillsInView = useInView(skillsRef, { once: true, margin: "-100px" });
   const [picHovered, setPicHovered] = useState(false);
+  const [mobileView, setMobileView] = useState(false);
+
+  useEffect(() => {
+    function updateWidth() {
+      setMobileView(window.innerWidth < 640);
+    }
+    window.addEventListener("resize", updateWidth);
+
+    return () => window.removeEventListener("resize", updateWidth);
+  }, []);
 
   //organize into languages: ts, tailwind; frameworks: React.js, Next.js; Database: PosrgreSQL;hosting: Vercel, CloudFlare
   const skills = [
@@ -38,10 +48,10 @@ export default function AboutSection() {
         >
           {/* Image */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={
-              isInView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, x: -50 }
+            initial={
+              mobileView ? { opacity: 0, y: -100 } : { opacity: 0, x: -100 }
             }
+            animate={{ opacity: 1, x: 0, y: 0 }}
             transition={{ duration: 0.4, delay: 0.2 }}
             onMouseEnter={() => setPicHovered(true)}
             onMouseLeave={() => setPicHovered(false)}
@@ -56,8 +66,10 @@ export default function AboutSection() {
 
           {/* Content */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+            initial={
+              mobileView ? { opacity: 0, y: -100 } : { opacity: 0, x: 100 }
+            }
+            animate={{ opacity: 1, x: 0, y: 0 }}
             transition={{ duration: 0.4, delay: 0.2 }}
           >
             <h2 className="text-foreground mb-8 text-4xl font-bold md:text-5xl">

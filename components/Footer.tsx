@@ -13,7 +13,7 @@ export default function Footer() {
       <div className="container mx-auto max-w-7xl">
         <div className="flex flex-col items-center justify-between gap-x-[40%] md:flex-row md:justify-center">
           <p className="text-base text-gray-400">
-            © {new Date().getFullYear()} Ab.Grok. All rights reserved.
+            © {new Date().getFullYear()} Ab-Grok. All rights reserved.
           </p>
 
           <Button
