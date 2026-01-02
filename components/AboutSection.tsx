@@ -52,7 +52,7 @@ export default function AboutSection() {
               mobileView ? { opacity: 0, y: -100 } : { opacity: 0, x: -100 }
             }
             animate={{ opacity: 1, x: 0, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.2 }}
+            transition={{ duration: 0.8 }}
             onMouseEnter={() => setPicHovered(true)}
             onMouseLeave={() => setPicHovered(false)}
           >
@@ -70,7 +70,7 @@ export default function AboutSection() {
               mobileView ? { opacity: 0, y: -100 } : { opacity: 0, x: 100 }
             }
             animate={{ opacity: 1, x: 0, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.2 }}
+            transition={{ duration: 0.8 }}
           >
             <h2 className="text-foreground mb-8 text-4xl font-bold md:text-5xl">
               About <span className="text-gradient-1">Me</span>
