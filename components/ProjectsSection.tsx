@@ -8,7 +8,7 @@ import { projects } from "../data/projects";
 
 export default function ProjectsSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-300px" });
+  const isInView = useInView(ref, { once: true, margin: "-200px" });
 
   return (
     <section
@@ -19,7 +19,7 @@ export default function ProjectsSection() {
       <div className="container mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-foreground mb-16 text-center text-4xl font-bold md:text-5xl">
@@ -32,7 +32,7 @@ export default function ProjectsSection() {
                 key={project.id}
                 initial={{ opacity: 0, y: 30 }}
                 animate={
-                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }
                 }
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
