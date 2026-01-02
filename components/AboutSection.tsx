@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 export default function AboutSection() {
   const ref = useRef(null);
   const skillsRef = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-200px" });
   const skillsInView = useInView(skillsRef, { once: true, margin: "-100px" });
   const [picHovered, setPicHovered] = useState(false);
   const [mobileView, setMobileView] = useState(false);
@@ -51,7 +51,13 @@ export default function AboutSection() {
             initial={
               mobileView ? { opacity: 0, y: -100 } : { opacity: 0, x: -100 }
             }
-            animate={{ opacity: 1, x: 0, y: 0 }}
+            animate={
+              isInView
+                ? { opacity: 1, x: 0, y: 0 }
+                : mobileView
+                  ? { opacity: 0, y: -100 }
+                  : { opacity: 0, x: -100 }
+            }
             transition={{ duration: 0.8 }}
             onMouseEnter={() => setPicHovered(true)}
             onMouseLeave={() => setPicHovered(false)}
@@ -69,8 +75,14 @@ export default function AboutSection() {
             initial={
               mobileView ? { opacity: 0, y: -100 } : { opacity: 0, x: 100 }
             }
-            animate={{ opacity: 1, x: 0, y: 0 }}
-            transition={{ duration: 0.8 }}
+            animate={
+              isInView
+                ? { opacity: 1, x: 0, y: 0 }
+                : mobileView
+                  ? { opacity: 0, y: -100 }
+                  : { opacity: 0, x: -100 }
+            }
+            transition={{ duration: 1.2 }}
             className=""
           >
             <h2 className="text-foreground mb-8 text-4xl font-bold md:text-5xl">
