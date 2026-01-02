@@ -70,9 +70,9 @@ export const projects: Project[] = [
     id: "project-3",
     title: "ScreenShooter",
     description:
-      "A web crawler that fetches html and screenshot data on preset basis.",
+      "A web crawler that fetches html and screenshot data on set time intervals.",
     fullDescription:
-      "A web crawler that fetches html and screenshot data on preset basis.",
+      "A web crawler that fetches html and screenshot data on set time intervals.",
     image: underConstruction,
     imageAlt: "Website under construction",
     tags: ["Node.js", "Next.js", "PostgreSQL"],
