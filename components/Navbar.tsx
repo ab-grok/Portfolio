@@ -46,7 +46,7 @@ export default function Navbar({ activeSection }: NavbarProps) {
 
             <button
               onClick={() => scrollToSection("hero")}
-              className="text-foreground hover:text-primary flex cursor-pointer items-center text-2xl font-bold transition-colors"
+              className="text-foreground/80 hover:text-primary flex cursor-pointer items-center text-2xl font-bold transition-colors"
             >
               Sule Abraham
             </button>
