@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import pic from "../public/portrait.png";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+// import {useMediaQuery} from "react-responsive"
 
 export default function AboutSection() {
   const ref = useRef(null);
@@ -14,11 +15,13 @@ export default function AboutSection() {
   const skillsInView = useInView(skillsRef, { once: true, margin: "-100px" });
   const [picHovered, setPicHovered] = useState(false);
   const [mobileView, setMobileView] = useState(false);
+  // const mobileView = useMediaQuery
 
   useEffect(() => {
     function updateWidth() {
       setMobileView(window.innerWidth < 640);
     }
+    updateWidth();
     window.addEventListener("resize", updateWidth);
 
     return () => window.removeEventListener("resize", updateWidth);
