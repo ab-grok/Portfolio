@@ -125,18 +125,18 @@ export default function AboutSection() {
               />
             </div>
             <p className="mb-12 text-lg leading-relaxed text-gray-200">
-              I'm a recent graduate armed with{" "}
+              I'm a recent graduate armed with 2+ years of{" "}
               <span className="text-gradient-5 rounded-3xl border-2 px-2">
-                2+ years of deep programming concepts
+                deep programming concepts
               </span>
-              {", "}
+              , a style choice of{" "}
               <span className="text-gradient-3 rounded-3xl border-2 px-2">
-                a style choice of contemporary art
+                contemporary art
               </span>
               {", "}
-              and{" "}
+              and a drive for{" "}
               <span className="text-gradient-4 rounded-3xl border-2 px-2">
-                a drive for learning
+                learning
               </span>
               {". "}
               My projects aim to transform complex problems into minimalistic,
