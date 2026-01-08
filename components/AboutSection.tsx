@@ -105,12 +105,12 @@ export default function AboutSection() {
 
             <p className="mb-8 text-lg leading-relaxed text-gray-200">
               I follow a shareholder‑first policy that guides every stage of my
-              project life-cycle. As a developer, my mission is to translate
-              your vision into a precise digital reality. Your specifications
-              are the roots of my creativity. I dedicate a significant portion
-              of my development time to ensuring seamless integration of layout
-              components, delivering solutions that are both functional and
-              refined
+              project development life-cycle. As a developer, my mission is to
+              translate your vision into a precise digital reality. Your
+              specifications are the roots of my creativity. I dedicate a
+              significant portion of my development time to ensuring seamless
+              integration of layout components, delivering solutions that are
+              both functional and refined
               {/* —. */}
             </p>
 
